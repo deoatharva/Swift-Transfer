@@ -11,47 +11,74 @@ const FileUpload = () => {
   };
 
   const handleUpload = async () => {
-    if (!file) return;
+  if (!file) return;
 
-    const code = generateCode();
+  const code = generateCode();
 
-    // Upload file
-    const { data, error } = await supabase.storage
-      .from("files")
-      .upload(`public/${code}-${file.name}`, file, { upsert: true });
+  // ✅ Clean filename (VERY IMPORTANT)
+  const cleanName = file.name.replace(/\s+/g, "-");
 
-    if (error) {
-      console.log(error);
-      return;
-    }
+  // ✅ Always use a folder
+  const filePath = `uploads/${code}-${cleanName}`;
 
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+  // ✅ Upload file
+  const { data, error } = await supabase.storage
+    .from("files")
+    .upload(filePath, file);
 
-    // Save metadata
-    await supabase.from("files").insert([
-      {
-        file_name: file.name,
-        file_url: data.path,
-        expire_at: expireAt,
-        share_code: code,
-        user_id: user.id,
-      },
-    ]);
+  if (error) {
+    console.log("Upload error:", error);
+    return;
+  }
 
-    setShareCode(code);
-  };
+  // ✅ Get user safely
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    console.log("User error:", userError);
+    return;
+  }
+
+  // ✅ Save metadata
+  const { error: dbError } = await supabase.from("files").insert([
+    {
+      file_name: file.name,
+      file_url: data.path,
+      expire_at: expireAt || null,
+      share_code: code,
+      user_id: user.id,
+    },
+  ]);
+
+  if (dbError) {
+    console.log("DB error:", dbError);
+    return;
+  }
+
+  setShareCode(code);
+};
 
   return (
     <>
-      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+      
+      <label className="file-label">
+      {file ? file.name : "Choose File"}
+      <input
+        type="file"
+        onChange={(e) => setFile(e.target.files[0])}
+        hidden
+      />
+    </label>
 
       <input
-        type="datetime-local"
-        value={expireAt}
-        onChange={(e) => setExpireAt(e.target.value)}
-      />
+      type="datetime-local"
+      className="form-control custom-input"
+      value={expireAt}
+      onChange={(e) => setExpireAt(e.target.value)}
+    />
 
       <button onClick={handleUpload} className="btn btn-primary mt-2">
         Upload

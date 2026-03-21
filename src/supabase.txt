@@ -1,0 +1,34 @@
+supabase sql commands
+
+create table files (
+  id uuid default uuid_generate_v4() primary key,
+  user_id uuid references auth.users,
+  file_name text,
+  file_url text,
+  access_code text,
+  created_at timestamp default now()
+);
+
+
+
+
+
+-> create a bucket
+>Go to Storage
+>Create bucket:
+>name: files
+>public: OFF
+
+
+
+
+
+alter table files enable row level security;
+
+create policy "insert own files"
+on files for insert
+with check (auth.uid() = user_id);
+
+create policy "select own files"
+on files for select
+using (auth.uid() = user_id);

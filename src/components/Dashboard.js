@@ -3,6 +3,7 @@ import FileUpload from "./FileUpload";
 import FileDownload from "./FileDownload";
 import { supabase } from "../supabaseClient";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/my-logoz.png";
 
 const Dashboard = () => {
 
@@ -18,7 +19,7 @@ const Dashboard = () => {
 
       {/* Header */}
       <div className="dashboard-header">
-        <h2 className="title">🚀 File Transfer</h2>
+        <img src={logo} alt="logo" width="300px"/>
         <button
           className="btn btn-danger logout-btn"
           onClick={handleLogout}
