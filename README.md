@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# 🚀 Swift Transfer – File Sharing System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern and fast file transfer web app that allows users to upload, share, and download files securely using a unique code.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🌐 Live Demo
 
-### `npm start`
+👉 https://swift-transfer.netlify.app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🌟 Features
 
-### `npm test`
+* 📤 Upload files easily
+* 🔗 Generate shareable download codes
+* 📥 Download files using code
+* 🔐 Secure authentication (Supabase)
+* ⏳ File expiration support
+* 🎨 Clean and modern UI
+* ⚡ Fast and responsive (React)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🛠️ Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* **Frontend:** React.js
+* **Backend / DB:** Supabase
+* **Auth:** Supabase Auth
+* **Storage:** Supabase Storage
+* **Routing:** React Router
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🔐 Authentication Flow
 
-### `npm run eject`
+* User logs in / signs up
+* Session handled by Supabase
+* Protected dashboard routes
+* Logout functionality included
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📦 File Upload Flow
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. User uploads file
+2. File stored in Supabase Storage
+3. Unique **share code** generated
+4. File can be accessed using the code
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 📥 File Download Flow
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Enter share code
+2. System validates file
+3. File is downloaded instantly
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 🚀 Build for Production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash id="0j0t57"
+npm run build
+```
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🧠 Future Improvements
 
-### Making a Progressive Web App
+* 📊 File analytics
+* 📱 Mobile optimization
+* 🔗 Expiring download links UI
+* 🧾 File history dashboard
+* 🌐 Drag & drop upload
+* 📁 Multiple file upload
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Contributions are welcome!
 
-### Deployment
+```id="9c1r8z"
+fork → clone → create branch → commit → push → PR
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 📄 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT License
+
+---
+
+## 👨‍💻 Author
+
+**Atharva**
+
+---
+
+## ⭐ Support
+
+If you like this project:
+
+* ⭐ Star the repo
+* 🍴 Fork it
+* 📢 Share it
