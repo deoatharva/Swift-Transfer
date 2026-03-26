@@ -48,7 +48,7 @@ const FileUpload = () => {
       file_name: file.name,
       file_url: data.path,
       expire_at: expireAt || null,
-      share_code: code,
+      access_code: code,
       user_id: user.id,
     },
   ]);

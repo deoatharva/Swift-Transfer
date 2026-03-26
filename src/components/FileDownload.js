@@ -8,7 +8,7 @@ const FileDownload = () => {
     const { data, error } = await supabase
       .from("files")
       .select("*")
-      .eq("share_code", code)
+      .eq("access_code", code)
       .single();
 
     if (error || !data) {
